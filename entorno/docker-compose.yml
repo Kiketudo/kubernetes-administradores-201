@@ -1,0 +1,15 @@
+services: 
+  postgres:
+    image: postgres
+    environment: 
+      - POSTGRES_PASSWORD= 1234
+  api:
+    build:
+      context: ./nestjs
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./src/api:/app 
+    command: ["npm", "run","dev"]
+    #user: "1000:1000" 
+   
